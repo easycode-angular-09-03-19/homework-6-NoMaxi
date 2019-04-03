@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
-// import { MessageService } from 'primeng/api';
 
 import { PostsService } from '../../services/posts.service';
 import { Post } from '../../interfaces/post';
@@ -17,9 +16,8 @@ export class PostsComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private postsService: PostsService,
-        private location: Location,
-        // private messageService: MessageService
     ) {}
 
     ngOnInit() {
@@ -33,7 +31,6 @@ export class PostsComponent implements OnInit {
     }
 
     onBackClick() {
-        // http://qaru.site/questions/16289358/angular-5-which-should-i-use-to-navigate-backward-href-or-locationback
-        this.location.back();
+        this.router.navigate(['../']);
     }
 }
