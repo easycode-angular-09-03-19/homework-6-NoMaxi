@@ -42,16 +42,14 @@ export class UserInfoComponent implements OnInit {
 
     onFormSubmit() {
         this.isBeingEdited = false;
-        this.userService.editUserInfo(this.user).subscribe((data: User) => {
+        const user = { ...this.user };
+        this.userService.editUserInfo(user).subscribe((data: User) => {
             this.messageService.add({
                 severity: 'success',
                 summary: 'Success notification',
-                detail: `User with id ${this.user.id} info has been successfully edited`,
+                detail: `User with id: ${ user.id } info has been successfully edited`,
                 key: 'success'
             });
-            setTimeout(() => {
-                this.router.navigate(['']);
-            }, 2000);
         }, (err) => {
             console.log(err);
             this.messageService.add({
@@ -64,6 +62,6 @@ export class UserInfoComponent implements OnInit {
     }
 
     onBackClick() {
-        this.router.navigate(['../']);
+        this.router.navigate(['/']);
     }
 }

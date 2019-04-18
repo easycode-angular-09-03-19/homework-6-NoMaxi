@@ -17,7 +17,6 @@ export class UsersListComponent implements OnInit {
     ngOnInit() {
         this.usersService.getUsers().subscribe((data: User[]) => {
             this.users = data;
-            console.log(data);
         }, (err) => {
             console.log(err);
         });

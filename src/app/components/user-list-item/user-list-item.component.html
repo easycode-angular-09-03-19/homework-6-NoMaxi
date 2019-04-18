@@ -1,8 +1,9 @@
 <div class="card my-2">
     <div class="card-body">
         <h5 class="card-title">{{ user?.name }}</h5>
-        <p class="card-text">User id: {{ user?.id }}, user
-            email: {{ user?.email }}</p>
+        <p class="card-text">
+            User id: {{ user?.id }}, user email: {{ user?.email }}
+        </p>
         <a
             href="#"
             class="btn btn-primary" [routerLink]="['/user', user?.id]"
@@ -17,8 +18,6 @@
         >
             User posts
         </a>
-        <!--<button class="btn btn-primary" (click)="onInfoClick()">Info</button>-->
-        <!--<button class="btn btn-success ml-5" (click)="onPostsClick()">User posts</button>-->
     </div>
 </div>
 

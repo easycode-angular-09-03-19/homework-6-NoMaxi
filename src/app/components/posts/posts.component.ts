@@ -31,6 +31,6 @@ export class PostsComponent implements OnInit {
     }
 
     onBackClick() {
-        this.router.navigate(['../']);
+        this.router.navigate(['/']);
     }
 }

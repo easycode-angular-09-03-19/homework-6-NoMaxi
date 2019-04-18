@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { User } from '../interfaces/user';
@@ -14,15 +15,15 @@ export class UsersService {
         private http: HttpClient
     ) {}
 
-    getUsers() {
-        return this.http.get(`${this.apiUrl}/users`);
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(`${this.apiUrl}/users`);
     }
 
-    getUserById(id: string) {
-        return this.http.get(`${this.apiUrl}/users/${id}`);
+    getUserById(id: string): Observable<User> {
+        return this.http.get<User>(`${this.apiUrl}/users/${id}`);
     }
 
-    editUserInfo(user: User) {
-        return this.http.put(`${this.apiUrl}/users/${user.id}`, user);
+    editUserInfo(user: User): Observable<User>  {
+        return this.http.put<User>(`${this.apiUrl}/users/${user.id}`, user);
     }
 }
