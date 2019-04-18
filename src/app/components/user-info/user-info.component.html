@@ -1,0 +1,103 @@
+<button (click)="onBackClick()"
+        class="btn btn-secondary btn-back fixed-top"
+> 
+  <i class="fas fa-chevron-circle-left mr-1"></i>
+  Back
+</button>
+
+<p-toast [style]="{marginTop: '75px'}" key="success"></p-toast>
+<p-toast [style]="{marginTop: '75px'}" key="error"></p-toast>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col col-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">User Info</h4>
+                    <form #editUserInfoFrom="ngForm">
+
+                        <input type="text"
+                               name="name"
+                               class="form-control mb-2"
+                               maxlength="100"
+                               minlength="2"
+                               placeholder="Name"
+                               required
+                               #name="ngModel"
+                               [ngModel]="user?.name"
+                               (ngModelChange)="user.name = $event"
+                               [readOnly]="!isBeingEdited"
+                        >
+
+                        <input type="text"
+                               name="username"
+                               class="form-control mb-2"
+                               maxlength="100"
+                               minlength="2"
+                               placeholder="Username"
+                               required
+                               #username="ngModel"
+                               [ngModel]="user?.username"
+                               (ngModelChange)="user.username = $event"
+                               [readOnly]="!isBeingEdited"
+                        >
+
+                        <input type="email"
+                               name="email"
+                               class="form-control mb-2"
+                               maxlength="100"
+                               minlength="5"
+                               placeholder="Email"
+                               required
+                               email
+                               #email="ngModel"
+                               [ngModel]="user?.email"
+                               (ngModelChange)="user.email = $event"
+                               [readOnly]="!isBeingEdited"
+                        >
+
+                        <input type="text"
+                               name="phone"
+                               class="form-control mb-2"
+                               maxlength="30"
+                               minlength="6"
+                               placeholder="Phone number"
+                               required
+                               #phone="ngModel"
+                               [ngModel]="user?.phone"
+                               (ngModelChange)="user.phone = $event"
+                               [readOnly]="!isBeingEdited"
+                        >
+
+                        <input type="text"
+                               name="website"
+                               class="form-control mb-2"
+                               maxlength="50"
+                               minlength="3"
+                               placeholder="Website"
+                               required
+                               #website="ngModel"
+                               [ngModel]="user?.website"
+                               (ngModelChange)="user.website = $event"
+                               [readOnly]="!isBeingEdited"
+                        >
+
+                        <button *ngIf="isBeingEdited"
+                                (click)="onFormSubmit()"
+                                [disabled]="editUserInfoFrom.invalid"
+                                class="btn btn-warning mt-3"
+                        > Submit
+                        </button>
+
+                        <button *ngIf="!isBeingEdited"
+                                (click)="onEditUserInfoClick()"
+                                class="btn btn-success mt-3"
+                        > Edit
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
